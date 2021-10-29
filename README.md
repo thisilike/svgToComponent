@@ -2,7 +2,7 @@
 Converts .svg files to Vue single-file-components (.vue)
 
 # How to install:
-Beside's cloneing the repo you will also need to install pyyaml:
+Beside's cloning the repo you will also need to install pyyaml:
     `pip install pyyaml`
 # How to use:
 ## Prepare
