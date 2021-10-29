@@ -20,4 +20,5 @@ To start you have two options:
     2 - You can start the main.py file though the terminal:
     `python ./main.py`
 
-
+# Config
+You can change the input and output folder in the config.yml.
