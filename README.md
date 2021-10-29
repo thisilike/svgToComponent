@@ -21,4 +21,4 @@ To start you have two options:
     `python ./main.py`
 
 # Config
-You can change the input and output folder in the config.yml.
+You can change the input(defaults to './input') and output(defaults to './output') folder in the config.yml.

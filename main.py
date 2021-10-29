@@ -6,15 +6,28 @@ try:
 except:
     raise Exception('yaml not installed. you can install it with: "pip install pyyaml".')
 
-def check_config(config):
+def load_config():
+    try:
+        with open('config.yml', 'r', encoding='utf-8') as config_file:
+            config = load(config_file, Loader=Loader)
+    except:
+        config = dict()
+    set_defaults(config)
+    return config
+
+def set_defaults(config):
     settings_name = 'inputFolderPath'
+    default_setting = './input'
     if config.get(settings_name) is None:
-        raise Exception(settings_name + ' not set in config')
+        print('"', settings_name + '" not set in config, default to "', default_setting, '"')
+        config['settings_name'] = default_setting
     print('config loaded: ', settings_name,' = "', config.get(settings_name), '"')
     
     settings_name = 'outputFolderPath'
+    default_setting = './output'
     if config.get(settings_name) is None:
-        raise Exception(settings_name + ' not set in config')
+        print('"', settings_name + '" not set in config, default to "', default_setting, '"')
+        config['settings_name'] = default_setting
     print('config loaded: ', settings_name,' = "', config.get(settings_name), '"')
 
 def convert(input_path: str, config: dict):
@@ -32,9 +45,7 @@ def convert(input_path: str, config: dict):
 
 
 def main():
-    with open('config.yml', 'r', encoding='utf-8') as config_file:
-        config = load(config_file, Loader=Loader)
-    check_config(config)
+    config = load_config()
     
     rmtree('./output')
 
